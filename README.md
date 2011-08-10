@@ -6,37 +6,37 @@ http module functions instead of cURL
 
 Examples
 --------
-  
-  require 'rest_client.php';
-  $c = new RestClient();
+
+    require 'rest_client.php';
+    $c = new RestClient();
 
 GET request
 
-  $res = $c->get('http://www.yahoo.com');
+    $res = $c->get('http://www.yahoo.com');
 
 Posting raw POST data
 
-  $res = $c->post(
-    'http://api.example.com/create', json_encode(array('name' => 'foobar'))
-  );
+    $res = $c->post(
+      'http://api.example.com/create', json_encode(array('name' => 'foobar'))
+    );
 
 Sending a form using POST
 
-  $res = $c->post(
-    'http://www.example.com/form', array('name' => 'foobar'))
-  );
+    $res = $c->post(
+      'http://www.example.com/form', array('name' => 'foobar'))
+    );
 
 Sending custom HTTP headers
 
-  $res = $c->post(
-    'http://www.example.com/form', json_encode(array('name' => 'foobar')),
-    array(
-      'headers' => array(
-        'X-My-App' => 'foobar/1.0',
-        'Content-type' => 'application/json'
+    $res = $c->post(
+      'http://www.example.com/form', json_encode(array('name' => 'foobar')),
+      array(
+        'headers' => array(
+          'X-My-App' => 'foobar/1.0',
+          'Content-type' => 'application/json'
+        )
       )
-    )
-  );
+    );
 
 References
 ----------
