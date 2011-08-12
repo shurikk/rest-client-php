@@ -80,7 +80,7 @@ class RestClient {
       );
     }
 
-    if($this->resonse_object->responseCode != 200) {
+    if(!in_array($this->resonse_object->responseCode, range(200,207))) {
       throw new RestClientException(
         $this->resonse_object->responseStatus,
         $this->resonse_object->responseCode
