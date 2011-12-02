@@ -57,8 +57,14 @@ Examples
 
 *PUT request*
 
-    $res = $c->post(
-      'http://www.example.com/upload.txt', 'PUT request data'
+    $res = $c->put(
+      'http://api.example.com/create', 'PUT request data'
+    );
+    
+*DELETE request*
+
+    $res = $c->delete(
+      'http://api.example.com/remove', 'PUT request data'
     );
 
 *RAW response data*
