@@ -9,7 +9,8 @@ pecl http module settings, see examples below. Constructor accepts all *http_opt
 from http://us.php.net/manual/en/http.request.options.php . Easy to extend.
 
 Detailed response information and [response object](http://us.php.net/manual/en/class.httpresponse.php)
-are respectively in *$client->response_info* and *$client->response_object*
+are respectively in *$client->response_info* and *$client->response_object*.
+Raw response data is available in *$client->response_raw*
 
 Examples
 --------
@@ -59,6 +60,14 @@ Examples
     $res = $c->post(
       'http://www.example.com/upload.txt', 'PUT request data'
     );
+
+*RAW response data*
+
+    $res = $c->get(
+      'http://www.example.com/upload.txt'
+    );
+
+    echo $c->response_raw;
 
 References
 ----------
