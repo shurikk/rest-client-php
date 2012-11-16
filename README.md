@@ -18,6 +18,9 @@ Examples
     require 'rest_client.php';
     $c = new RestClient();
 
+    You can also set the base url: `$c = new RestClient('http://example.com');`,
+    and then call pages like `$res = $c->get('/hello.html');`.
+
 *GET request*
 
     $res = $c->get('http://www.yahoo.com');

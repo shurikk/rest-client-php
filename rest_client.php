@@ -21,9 +21,11 @@ class RestClient {
   public $response_object;
   public $response_raw;
 
+  private $base_url = '';
   public $http_options = array();
 
-  function __construct($http_options = array()) {
+  function __construct($base_url = '', $http_options = array()) {
+    $this->base_url = $base_url;
     $this->http_options = array_merge(array(
       'cookiestore' => self::COOKIE_JAR,
       'useragent' => self::AGENT,
@@ -32,6 +34,8 @@ class RestClient {
   }
   
   function get($url, $http_options = array()) {
+    $url = "$this->base_url" . "$url";
+    $url = rtrim($url, '/');    // strip trailing slash
     $http_options = array_merge($this->http_options, $http_options);
     $this->http_parse_message(
       http_get($url, $http_options, $this->response_info)
@@ -40,6 +44,8 @@ class RestClient {
   }
 
   function post($url, $fields = array(), $http_options = array()) {
+    $url = "$this->base_url" . "$url";
+    $url = rtrim($url, '/');    // strip trailing slash
     $http_options = array_merge($this->http_options, $http_options);
     $res = is_array($fields) ? 
       http_post_fields($url, $fields, array(), $http_options, $this->response_info) :
@@ -49,6 +55,8 @@ class RestClient {
   }
   
   function put($url, $data = '', $http_options = array()) {
+    $url = "$this->base_url" . "$url";
+    $url = rtrim($url, '/');    // strip trailing slash
     $http_options = array_merge($this->http_options, $http_options);
     $this->http_parse_message(
       http_put_data($url, $data, $http_options, $this->response_info)
@@ -57,6 +65,8 @@ class RestClient {
   }
 
   function delete($url, $http_options = array()) {
+    $url = "$this->base_url" . "$url";
+    $url = rtrim($url, '/');    // strip trailing slash
     $http_options = array_merge($this->http_options, $http_options);
     $this->http_parse_message(
       http_request(HTTP_METH_DELETE, $url, '', $http_options, $this->response_info)
